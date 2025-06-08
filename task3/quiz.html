@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Quiz</title>
+</head>
+<body>
+  <h2>JavaScript Quiz</h2>
+  <div id="quiz">
+    <p>Q1: What does CSS stand for?</p>
+    <input type="radio" name="q1" value="a">Computer Style Sheets<br>
+    <input type="radio" name="q1" value="b">Cascading Style Sheets<br>
+    <input type="radio" name="q1" value="c">Colorful Style Sheets<br>
+
+    <p>Q2: Inside which HTML element do we put JavaScript?</p>
+    <input type="radio" name="q2" value="a">&lt;scripting&gt;<br>
+    <input type="radio" name="q2" value="b">&lt;script&gt;<br>
+    <input type="radio" name="q2" value="c">&lt;js&gt;<br>
+
+    <button onclick="checkAnswers()">Submit</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      let score = 0;
+      const answers = {
+        q1: 'b',
+        q2: 'b'
+      };
+
+      for (let key in answers) {
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        if (selected && selected.value === answers[key]) {
+          score++;
+        }
+      }
+
+      document.getElementById('result').innerText = `Your score is: ${score}/2`;
+    }
+  </script>
+</body>
+</html>
